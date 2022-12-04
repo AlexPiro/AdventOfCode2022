@@ -6,29 +6,31 @@
 #include <sstream>
 
 
-std::vector<std::string> getAssignmentPair(std::string& line)
+std::string* getAssignmentPair(std::string& line)
 {
-    std::vector<std::string> assignment;
+    std::string* assignment = new std::string[2];
     std::istringstream iss(line);
     std::string currentPair;
-
+    int i = 0;
     while(std::getline(iss, currentPair, ','))
     {
-        assignment.push_back(currentPair);
+        assignment[i] = currentPair;
+        i++;
     }
 
     return assignment;
 }
 
-std::vector<int> getSections(std::string& pair)
+int* getSections(std::string& pair)
 {
-    std::vector<int> sections;
+    int* sections = new int[2];
     std::istringstream iss(pair);
     std::string currentSection;
-
+    int i = 0;
     while(std::getline(iss, currentSection, '-'))
     {
-        sections.push_back(std::stoi(currentSection));
+        sections[i] = std::stoi(currentSection);
+        i++;
     }
 
     return sections;
@@ -46,9 +48,9 @@ int main() {
         std::string line;
         while(getline(f, line))
         {
-            std::vector<std::string> assignment = getAssignmentPair(line);
-            std::vector<int> sectionsOne = getSections(assignment[0]);
-            std::vector<int> sectionsTwo = getSections(assignment[1]);
+            std::string* assignment = getAssignmentPair(line);
+            int* sectionsOne = getSections(assignment[0]);
+            int* sectionsTwo = getSections(assignment[1]);
             if(sectionsOne[0] <= sectionsTwo[0] && sectionsOne[1] >= sectionsTwo[1])
             {
                 //sectionsOne fully overlapp sectionsTwo 
