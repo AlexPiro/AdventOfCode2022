@@ -41,7 +41,7 @@ int main() {
     std::fstream f;
     f.open("input.txt", std::ios::in);
 
-    int fullyContainedAssignments = 0;
+    int overlappedAssignments = 0;
 
     if(f.is_open())
     {
@@ -54,23 +54,23 @@ int main() {
             if(sectionsOne[0] <= sectionsTwo[0] && sectionsOne[1] >= sectionsTwo[1])
             {
                 //sectionsOne fully overlapp sectionsTwo 
-                fullyContainedAssignments += 1;
+                overlappedAssignments += 1;
             } 
             else if(sectionsOne[0] >= sectionsTwo[0] && sectionsOne[1] <= sectionsTwo[1])
             {
                 //sectionsTwo fully overlapp sectionsOne 
-                fullyContainedAssignments += 1;
+                overlappedAssignments += 1;
             }
             else if((sectionsTwo[0] >= sectionsOne[0] && sectionsTwo[0] <= sectionsOne[1]) ||
                     (sectionsTwo[1] >= sectionsOne[0] && sectionsTwo[0] <= sectionsOne[1]))
             {
                 //overlapp on one side
-                fullyContainedAssignments += 1;
+                overlappedAssignments += 1;
             }
             
         }
         
-        std::cout << fullyContainedAssignments << std::endl;
+        std::cout << overlappedAssignments << std::endl;
 
         f.close();
     }
