@@ -3,3 +3,4 @@
 
 #Remove executables
 **.exe
+**.dSYM
