@@ -38,7 +38,6 @@ struct Node {
     struct Node *next = nullptr;
 };
 
-const int GRID_SIZE = 2000;
 
 std::vector<std::string> getMotion(std::string& line)
 {
@@ -127,7 +126,6 @@ int main() {
     std::fstream f;
     f.open("input.txt", std::ios::in);
 
-    //init the rope
     Node* head = new Node();
     Node* currentNode = head;
     for (int i = 0; i < 9; i++)
@@ -139,7 +137,6 @@ int main() {
         currentNode = nextNode;
     }
     
-
     std::unordered_set<Pos, PosHasher, PosComparator> tailPositions;
 
     if(f.is_open())
